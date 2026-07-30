@@ -1,0 +1,34 @@
+# ================================================
+# .gitignore - Sincronización Parcial a GitHub
+# ================================================
+
+# --- Archivos de Gobernanza y Documentación Interna ---
+# Excluidos por privacidad: contienen decisiones técnicas y razonamiento interno
+agent.md
+memory.md
+spec.md
+skills.md
+
+# --- Directorios con Información Sensible ---
+# Configuración con IDs de Google Drive y credenciales
+config/
+
+# CSVs con mappings de archivos productivos
+data/
+
+# Logs de ejecución (pueden contener rutas y metadata sensible)
+logs/
+
+# Documentación interna y checklist de producción
+docs/
+
+# --- Sistema Operativo ---
+.DS_Store
+Thumbs.db
+
+# --- IDEs y Editores ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
