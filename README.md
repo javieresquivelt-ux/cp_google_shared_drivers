@@ -21,10 +21,7 @@ belat_shared_drives/
 ├── scripts/
 │   ├── cron_wrapper.sh        # Script envolvente para limpieza de logs y ejecución desatendida.
 │   └── sync_gam.sh            # Script y motor principal de la sincronización GAM.
-├── agent.md                   # Reglas del Agente y gobernanza del proyecto.
-├── memory.md                  # Registro de decisiones de arquitectura y soluciones técnicas (ADR).
-├── spec.md                    # Especificaciones técnicas y flags utilizados.
-└── tasks.md                   # WBS, checklist y control de tareas del proyecto.
+
 ```
 
 ## Diagrama de Flujo del Proceso
@@ -67,11 +64,7 @@ graph TD
    ```
 5. **Programación Diaria:** (No recomendado para el entorno POC local actual). Agregar al crontab del servidor Linux la ejecución apuntando a `cron_wrapper.sh`.
 
-## Paleta de Colores y Tipografías
-*Nota: Al tratarse de una herramienta 100% Backend ejecutada vía interfaz de línea de comandos (CLI), no utiliza hojas de estilos CSS ni un DOM web.*
-- **Tipografías:** El sistema hereda automáticamente la fuente monoespaciada configurada en la consola del operador (ej. `Ubuntu Mono`, `Courier New`, o `Consolas`), manteniendo el estándar de tamaño de su TTY.
-- **Colores:** Se emplea el contraste por defecto del terminal (blanco/negro), con toda la información valiosa siendo registrada en formato texto plano en `.log` para asegurar la legibilidad del dato sin importar el tema del sistema.
 
-## Aprendizajes Clave y Reflexión Técnica
-1. **El peligro de las Sub-Shells Interactivas en Scripts Desatendidos:** Descubrimos experimentalmente que forzar un entorno iteractivo (`bash -ic`) dentro de un script bash sin un usuario supervisando causa problemas severos de "Job Control" en Linux. El sistema pausa el proceso y lo envía a segundo plano con una señal de Stop. Fue necesario refactorizar este componente para resolver la ruta al binario absoluto en lugar de confiar en que la shell interactiva cargase el alias de bash.
-2. **Homogeneidad de Comandos vs Fork:** Al operar con herramientas Open-Source (GAM v7 y GAMADV-XTD3), descubrimos que algunos comandos (`gam oauth check`) estaban deprecados o inexistentes según el fork utilizado por el entorno local. Esto enseñó que las comprobaciones de salud del agente (`health-checks`) deben depender de los comandos más básicos y universales posibles, como lo es `gam info domain`, para salvaguardar la estabilidad de las automatizaciones de infraestructura ante migraciones.
+
+---
+Proyecto desarrollado por Javier Esquivel.
